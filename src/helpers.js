@@ -5,9 +5,6 @@ const path = require('path');
 const chalk = require('chalk');
 const replace = require('replace-in-file');
 
-// const mkDir = promisify(fs.mkdir);
-// const copyFile = promisify(fs.copyFile);
-
 const createDir = (fileName) => {
   fs.mkdirSync(fileName);
   console.log(`${chalk.green('create: ')}created directory: ${fileName}`);

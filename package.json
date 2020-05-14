@@ -1,6 +1,6 @@
 {
   "name": "@vsimonovski/react-cli",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A CLI to generate single React component",
   "main": "src/index.js",
   "bin": {

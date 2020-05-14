@@ -1,35 +1,54 @@
 const { program } = require('commander');
 const chalk = require('chalk');
-const {
-  mkDir,
-  copyFile,
-  cpFile,
-  replaceInFile,
-  createDir,
-} = require('./helpers');
+const { cpFile, createDir, handleSb, handleBase } = require('./helpers');
 
 const cli = (args) => {
+  // register CLI commands
   program
-    .option('-d, --debug', 'output extra debugging')
-    .option('-f --file-name <comp-name>');
+    .option(
+      '-c --component <comp-name>',
+      'generate component with storybook and styled components support'
+    )
+    .option(
+      '-sb --storybook <comp-name>',
+      'generate component with storybook support'
+    )
+    .option(
+      '-sc --styled-component <comp-name>',
+      'generate component with styled component support'
+    );
 
   program.parse(args);
 
-  if (program.debug) console.log(program.opts());
-
-  if (program.fileName) {
+  // common action for all commands
+  if (program.component || program.storybook || program.styledComponent) {
     console.log(`${chalk.blue('info: ')}creating new directory...`);
-    createDir(program.fileName);
-
+    createDir(
+      program.component || program.storybook || program.styledComponent
+    );
     console.log(`${chalk.blue('info: ')}creating component files...`);
-    cpFile(program.fileName, 'Template.js', 'js');
-    cpFile(program.fileName, 'Template.style.js', 'style.js');
-    cpFile(program.fileName, 'Template.stories.js', 'stories.js');
-    cpFile(program.fileName, 'Template.stories.mdx', 'stories.mdx');
+    handleBase(
+      program.component || program.storybook || program.styledComponent
+    );
+  }
 
-    replaceInFile(program.fileName, 'Template.js', 'js');
-    replaceInFile(program.fileName, 'Template.stories.js', 'stories.js');
-    replaceInFile(program.fileName, 'Template.stories.mdx', 'stories.mdx');
+  // in case that component option is active or all options are active
+  if (
+    program.component ||
+    (program.component && program.storybook && program.styledComponent)
+  ) {
+    cpFile(program.component, 'Template.style.js', 'style.js');
+    handleSb(program.component);
+    // in case that storybook option is active
+  } else if (program.storybook) {
+    handleSb(program.storybook);
+    // in case that styled component option is active
+  } else if (program.styledComponent) {
+    cpFile(program.styledComponent, 'Template.style.js', 'style.js');
+    // if no options are present show help screen
+  } else {
+    console.log(`${chalk.red('err: ')}invalid usage`);
+    program.help();
   }
 };
 

@@ -29,8 +29,22 @@ const replaceInFile = (fileName, templateName, extension) => {
   });
 };
 
+const handleBase = (fileName) => {
+  cpFile(fileName, 'Template.js', 'js');
+  replaceInFile(fileName, 'Template.js', 'js');
+};
+
+const handleSb = (fileName) => {
+  cpFile(fileName, 'Template.stories.js', 'stories.js');
+  cpFile(fileName, 'Template.stories.mdx', 'stories.mdx');
+  replaceInFile(fileName, 'Template.stories.js', 'stories.js');
+  replaceInFile(fileName, 'Template.stories.mdx', 'stories.mdx');
+};
+
 module.exports = {
   createDir: createDir,
   cpFile: cpFile,
   replaceInFile: replaceInFile,
+  handleBase: handleBase,
+  handleSb: handleSb
 };

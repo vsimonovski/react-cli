@@ -1,0 +1,30 @@
+{
+  "name": "@vsimonovski/react-cli",
+  "version": "1.0.0",
+  "description": "A CLI to generate single React component",
+  "main": "src/index.js",
+  "bin": {
+    "@vsimonovski/react-cli": "bin/react-cmp",
+    "react-cli": "bin/react-cmp"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Vladimir Simonovski",
+  "license": "MIT",
+  "keywords": [
+    "cli",
+    "react-cli"
+  ],
+  "dependencies": {
+    "chalk": "^4.0.0",
+    "commander": "^5.1.0",
+    "replace-in-file": "^6.0.0"
+  },
+  "devDependencies": {
+    "prettier": "^2.0.5"
+  }
+}

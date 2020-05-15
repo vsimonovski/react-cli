@@ -6,19 +6,23 @@ Simple React CLI that will generate functional component, storybook(mdx docs sup
 
 ## 🛠 Technologies used
 
--  ⚡️️ [Node.js](https://nodejs.org)
--  🧙 [Commander.js](https://github.com/tj/commander.js/) for argument management
--  🖍 [Chalk](https://github.com/chalk/chalk) Terminal string styling done right
--  👨‍🎤 [Prettier](https://github.com/prettier/prettier) for code readability
+- ⚡️️ [Node.js](https://nodejs.org)
+- 🧙 [Commander.js](https://github.com/tj/commander.js/) for argument management
+- 🖍 [Chalk](https://github.com/chalk/chalk) Terminal string styling done right
+- 👨‍🎤 [Prettier](https://github.com/prettier/prettier) for code readability
 
 ## ⚡️ Installation
 
 ```bash
 # install react-cli script globally
-yarn global add @vsimonovski/react-cli 
+yarn global add @vsimonovski/react-cli
 # or
 npm install -g @vsimonovski/react-cli
 ```
+
+## 📼 Demo
+
+![Demo](./demo.gif)
 
 ## 💡 Usage
 
